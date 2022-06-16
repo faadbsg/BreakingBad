@@ -1,6 +1,6 @@
 import 'package:app_breaking_bad/common/favorite/favorites_models.dart';
 import 'package:app_breaking_bad/domain/entity/episode_entity.dart';
-import 'package:app_breaking_bad/presentation/models/Episode_model.dart';
+import 'package:app_breaking_bad/presentation/models/episode_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,11 +14,8 @@ class EpisodeLoadedWidget extends StatefulWidget {
 }
 
 class _EpisodeLoadedWidgetState extends State<EpisodeLoadedWidget> {
-  int i = 0;
   @override
   Widget build(BuildContext context) {
-    i += 1;
-    print('build ${i}');
     final favorites = context.watch<FavoritesModels>().listFavoritesElements;
     return Padding(
       padding: const EdgeInsets.all(3.0),
@@ -49,11 +46,9 @@ class _EpisodeLoadedWidgetState extends State<EpisodeLoadedWidget> {
               trailing: IconButton(
                 onPressed: () {
                   if (!isEpisodeFavorite) {
-                    print('add new favorite episode');
                     Provider.of<FavoritesModels>(context, listen: false)
                         .addNewFavoriteElement(episodeModel);
                   } else {
-                    print('remove a favorite episode');
                     Provider.of<FavoritesModels>(context, listen: false)
                         .removeFavoriteElement(episodeModel);
                   }

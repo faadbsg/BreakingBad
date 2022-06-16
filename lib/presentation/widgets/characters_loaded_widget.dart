@@ -17,7 +17,6 @@ class _LoadedCharacterWidgetState extends State<LoadedCharacterWidget> {
   @override
   Widget build(BuildContext context) {
     final favorites = context.watch<FavoritesModels>().listFavoritesElements;
-    print('toto:build');
     return Padding(
       padding: const EdgeInsets.all(3.0),
       child: ListView.separated(
@@ -26,7 +25,6 @@ class _LoadedCharacterWidgetState extends State<LoadedCharacterWidget> {
         itemCount: widget.charactersList.length,
         separatorBuilder: ((context, index) => const Divider()),
         itemBuilder: ((context, index) {
-          print('toto:item builder $index');
           final character = widget.charactersList[index];
           final charactermodel = CharacterModels(
             idModel: character.id,
@@ -38,7 +36,6 @@ class _LoadedCharacterWidgetState extends State<LoadedCharacterWidget> {
             nameModel: character.name,
             imageUrlModel: character.imageUrl,
           );
-          print('toto : ${charactermodel == charactermodel2}');
           late int favoriteIndex;
           favoriteIndex =
               favorites.indexWhere((element) => element == charactermodel);
