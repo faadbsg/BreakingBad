@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_breaking_bad/common/domain/favoritable.dart';
 
 class EpisodeModels extends Favoritable {
@@ -23,11 +22,27 @@ class EpisodeModels extends Favoritable {
         releaseDateModel,
       ];
   @override
-  // TODO: implement stringify
   bool? get stringify => true;
 
   @override
   String toString() {
-    return 'EpisodeModels(numberEpisodeModel: $numberEpisodeModel, titleModel: $titleModel, seasonModel: $seasonModel, releaseDateModel: $releaseDateModel)';
+    return 'EpisodeModels(numberEpisodeModel: $numberEpisodeModel, titleModel: $titleModel, seasonModel: $seasonModel, releaseDateModel: $releaseDateModel,typeModel=Episode)';
   }
-}
+
+  Map<String, dynamic> toJson() => {
+        'numberEpisodeModel': numberEpisodeModel,
+        'titleModel': titleModel,
+        'seasonModel': seasonModel,
+        'releaseDateModel': releaseDateModel,
+        'typeModel': "Episode",
+      };
+
+  factory EpisodeModels.fromJson(Map<String, dynamic> map) {
+    return EpisodeModels(
+      numberEpisodeModel: map['numberEpisodeModel'],
+      titleModel: map['titleModel'],
+      seasonModel: map['seasonModel'],
+      releaseDateModel: map['releaseDateModel'],
+    );
+  }
+}//end EpisodeModels
